@@ -14,7 +14,32 @@
     </div>
 
     <script>
-        // JavaScript code to handle log loading and interactions
+        // Function to fetch more log entries
+        function fetchMoreLogs() {
+            // Show the loading indicator
+            document.getElementById("loading-indicator").style.display = "block";
+    
+            // Make an AJAX request to fetch more log entries from the server
+            // Update the log-list with the newly fetched log entries
+    
+            // After the request is complete, hide the loading indicator
+            document.getElementById("loading-indicator").style.display = "none";
+        }
+    
+        // Function to check if the user has scrolled to the bottom
+        function isScrolledToBottom() {
+            const logList = document.getElementById("log-list");
+            return logList.scrollTop + logList.clientHeight >= logList.scrollHeight;
+        }
+    
+        // Event listener for scrolling
+        document.getElementById("log-list").addEventListener("scroll", function () {
+            if (isScrolledToBottom()) {
+                // When scrolled to the bottom, fetch more log entries
+                fetchMoreLogs();
+            }
+        });
     </script>
+    
 </body>
 </html>
